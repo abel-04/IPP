@@ -39,7 +39,7 @@ void setup() {
   Serial.print("IP-adress: ");
   Serial.println(WiFi.localIP());
 
-  Serial.println("\nWiFi ansluten ✅");
+  Serial.println("\nWiFi ansluten ");
 
   // Firebase setup
   config.api_key = API_KEY;
@@ -78,15 +78,15 @@ void loop() {
 
   if (distance < 50) {
     status = "occupied";
-    Serial.println("🚗 UPPTAGEN");
+    Serial.println(" UPPTAGEN");
   } else {
     status = "free";
-    Serial.println("🟢 LEDIG");
+    Serial.println(" LEDIG");
   }
 
   // === Skicka till Firebase ===
   if (Firebase.RTDB.setString(&fbdo, "parking/spot1/status", status)) {
-    Serial.println("Data skickad ✅");
+    Serial.println("Data skickad ");
   } else {
     Serial.println("Fel:");
     Serial.println(fbdo.errorReason());
